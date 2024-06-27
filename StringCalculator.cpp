@@ -1,4 +1,6 @@
 #include "StringCalculator.h"
+#include <sstream>
+#include <stdexcept>
 int StringCalculator::add(std::string& numbers){
   if (numbers.empty()) {
         return 0;
