@@ -13,6 +13,7 @@ private:
     std::vector<int> parseNumbers(const std::string& numbers);
     void checkForNegatives(const std::vector<int>& numbers);
     int sumNumbers(const std::vector<int>& numbers);
+    std::string buildErrorMessage(const std::vector<int>& negatives);
 };
 
 #endif // STRINGCALCULATOR_H
