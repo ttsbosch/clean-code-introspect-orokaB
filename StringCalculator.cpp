@@ -58,7 +58,8 @@ std::string StringCalculator::buildErrorMessage(const std::vector<int>& negative
 int StringCalculator::sumNumbers(const std::vector<int>& numbers) {
     int sum = 0;
     for (int number : numbers) {
-        sum += number;
+        if (number <= 1000){
+        sum += number;}
     }
     return sum;
 }
