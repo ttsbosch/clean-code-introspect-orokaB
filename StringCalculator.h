@@ -14,7 +14,6 @@ private:
     int sumNumbers(const std::vector<int>& numbers);
     std::string buildErrorMessage(const std::vector<int>& negatives);
 
-    // Private helper function (example)
     std::vector<int> parseNumbersWithCustomDelimiter(const std::string& numbers, const std::string& delimiter);
 };
 
