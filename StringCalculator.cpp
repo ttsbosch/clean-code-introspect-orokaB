@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <regex>
 
 int StringCalculator::add(const std::string& numbers) {
     if (numbers.empty()) {
@@ -17,12 +18,16 @@ int StringCalculator::add(const std::string& numbers) {
 }
 
 std::vector<int> StringCalculator::parseNumbers(const std::string& numbers) {
-    std::stringstream ss(numbers);
+    std::string modifiedNumbers = numbers;
+    std::replace(modifiedNumbers.begin(), modifiedNumbers.end(), '\n', ',');
+    std::stringstream ss(modifiedNumbers);
     std::string item;
     std::vector<int> parsedNumbers;
 
     while (std::getline(ss, item, ',')) {
-        parsedNumbers.push_back(std::stoi(item));
+        if (!item.empty()) {
+            parsedNumbers.push_back(std::stoi(item));
+        }
     }
 
     return parsedNumbers;
