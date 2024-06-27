@@ -1,4 +1,3 @@
-// StringCalculator.h
 #ifndef STRINGCALCULATOR_H
 #define STRINGCALCULATOR_H
 
@@ -14,6 +13,10 @@ private:
     void checkForNegatives(const std::vector<int>& numbers);
     int sumNumbers(const std::vector<int>& numbers);
     std::string buildErrorMessage(const std::vector<int>& negatives);
+
+    // Private helper function (example)
+    std::vector<int> parseNumbersWithCustomDelimiter(const std::string& numbers, const std::string& delimiter);
 };
 
 #endif // STRINGCALCULATOR_H
+
