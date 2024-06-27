@@ -18,17 +18,26 @@ int StringCalculator::add(const std::string& numbers) {
 }
 
 std::vector<int> StringCalculator::parseNumbers(const std::string& numbers) {
-    std::string modifiedNumbers = numbers;
-    std::string delimiter = ","; // default delimiter
+    // Default delimiter
+    std::string delimiter = ",";
 
     // Check for custom delimiter
-    if (modifiedNumbers.substr(0, 2) == "//") {
-        size_t endOfDelimiter = modifiedNumbers.find("\n");
+    size_t delimiterPos = numbers.find("//");
+    if (delimiterPos != std::string::npos) {
+        size_t endOfDelimiter = numbers.find("\n", delimiterPos);
         if (endOfDelimiter != std::string::npos) {
-            delimiter = modifiedNumbers.substr(2, endOfDelimiter - 2);
-            modifiedNumbers = modifiedNumbers.substr(endOfDelimiter + 1);
+            delimiter = numbers.substr(delimiterPos + 2, endOfDelimiter - delimiterPos - 2);
+            // Update numbers string after removing delimiter definition
+            return parseNumbersWithCustomDelimiter(numbers.substr(endOfDelimiter + 1), delimiter);
         }
     }
+
+    // No custom delimiter found, parse with default delimiter
+    return parseNumbersWithCustomDelimiter(numbers, delimiter);
+}
+
+std::vector<int> StringCalculator::parseNumbersWithCustomDelimiter(const std::string& numbers, const std::string& delimiter) {
+    std::string modifiedNumbers = numbers;
 
     // Replace newline and custom delimiter with comma
     std::replace(modifiedNumbers.begin(), modifiedNumbers.end(), '\n', ',');
