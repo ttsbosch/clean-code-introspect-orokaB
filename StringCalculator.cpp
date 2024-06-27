@@ -18,8 +18,21 @@ int StringCalculator::add(const std::string& numbers) {
 }
 
 std::vector<int> StringCalculator::parseNumbers(const std::string& numbers) {
-    std::string modifiedNumbers = numbers;
+std::string modifiedNumbers = numbers;
+    std::string delimiter = ","; // default delimiter
+    size_t delimiterPos = modifiedNumbers.find("//");
+    
+    if (delimiterPos != std::string::npos) {
+        size_t endOfDelimiter = modifiedNumbers.find("\n", delimiterPos);
+        if (endOfDelimiter != std::string::npos) {
+            delimiter = modifiedNumbers.substr(delimiterPos + 2, endOfDelimiter - delimiterPos - 2);
+            modifiedNumbers = modifiedNumbers.substr(endOfDelimiter + 1);
+        }
+    }
+
     std::replace(modifiedNumbers.begin(), modifiedNumbers.end(), '\n', ',');
+    std::replace(modifiedNumbers.begin(), modifiedNumbers.end(), delimiter.front(), ',');
+
     std::stringstream ss(modifiedNumbers);
     std::string item;
     std::vector<int> parsedNumbers;
