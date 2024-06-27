@@ -45,7 +45,7 @@ TEST(StringCalculatorAddTests, ExpectSumWithNewlineDelimiter) {
     ASSERT_EQ(result, expectedresult);
 }
 
-/*TEST(StringCalculatorAddTests, IgnoreNumbersGreaterThan1000) {
+TEST(StringCalculatorAddTests, IgnoreNumbersGreaterThan1000) {
     int expectedresult = 1;
     std::string input = "1,1001";
     StringCalculator objUnderTest;
@@ -54,7 +54,7 @@ TEST(StringCalculatorAddTests, ExpectSumWithNewlineDelimiter) {
     ASSERT_EQ(result, expectedresult);
 }
 
-TEST(StringCalculatorAddTests, ExpectSumWithCustomDelimiter) {
+/*TEST(StringCalculatorAddTests, ExpectSumWithCustomDelimiter) {
     int expectedresult = 3;
     std::string input = "//;\n1;2";
     StringCalculator objUnderTest;
